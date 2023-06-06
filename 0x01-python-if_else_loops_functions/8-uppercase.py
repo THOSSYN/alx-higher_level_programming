@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 #8-uppercase.py
 
-def uppercase(string):
+def uppercase(str):
     """Prints a string in uppercase."""
-    for x in string:
-        if x >= 'a' and x <= 'z':
+    for x in str:
+        if ord(x) >= 97 and ord(x) <= 122:
             x = chr(ord(x) - 32)
         print(x, end = "")
     print("")
