@@ -1,6 +1,12 @@
 #!/usr/bin/python3
-for x in range(97, 123):
-    if x % 2 != 0:
-        x = chr(x - 32)
+#100-print_tebahpla.py
+
+"""Prints alphabets in reverse alternating
+uppercase and lowercase"""
+i = 0
+for x in range(ord('z'), ord('a') - 1, -1):
+    print("{}".format(chr(x - i)), end="")
+    if i == 0:
+        i = 32
     else:
-        print(x)
+        i = 0
