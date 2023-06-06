@@ -1,5 +1,4 @@
 #!/usr/bin/python3
 import sys
-line = "and that piece of art is useful - Dora korpar, 2015-10-19\n"
-sys.stderr.write(line)
+sys.stderr.write("and that piece of art is useful - Dora korpar, 2015-10-19\n")
 sys.exit(1)
