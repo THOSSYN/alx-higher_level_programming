@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#2-print_alphabet.py
+# 2-print_alphabet.py
 
 """Prints alphabets in lowercase, not followed
 by a new line."""
