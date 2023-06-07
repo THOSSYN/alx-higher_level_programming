@@ -5,6 +5,6 @@
 separated by , followed by a space"""
 for num in range(0, 100):
     if num == 99:
-        print("{}".format(num))
+        print("{:02d}".format(num))
     else:
         print("{:02d}".format(num), end=", ")
