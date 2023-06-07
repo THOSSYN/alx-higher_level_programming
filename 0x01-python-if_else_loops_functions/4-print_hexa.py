@@ -6,5 +6,5 @@ in hexadecimal"""
 i = 0
 
 while i <= 98:
-    print("{:d} = {:x}".format(i, i))
+    print("{:d} = 0x{:x}".format(i, i))
     i += 1
