@@ -2,9 +2,9 @@
 # 5-print_comb2.py
 
 """Prints numbers from 0 to 99.Numbers must be
-separated by , followed by a space"""
+separated by , followed by a space."""
 for num in range(0, 100):
-    if num == 99:
-        print("{:02d}".format(num))
+    if num != 99:
+        print("{:02d}".format(num), end=', ')
     else:
-        print("{:02d}".format(num), end=", ")
+        print("{:02d}".format(num))
