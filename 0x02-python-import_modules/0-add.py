@@ -1,6 +1,6 @@
 #!/usr/bin/python3
+
 if __name__ == "__main__":
-    from add_0 import add
     """0-add.py add two variable a and b by importing add-0
     Arguments:
         a: first parameter
@@ -9,6 +9,8 @@ if __name__ == "__main__":
     Returns:
         The value a + b
     """
+    from add_0 import add
+
     a = 1
     b = 2
 
