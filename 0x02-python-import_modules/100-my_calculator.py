@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     if sign == '+':
         result = cal.add(a, b)
-    elif sign =='-':
+    elif sign == '-':
         result = cal.sub(a, b)
     elif sign == '*':
         result = cal.mul(a, b)
