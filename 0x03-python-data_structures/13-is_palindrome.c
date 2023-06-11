@@ -1,6 +1,12 @@
 #include "lists.h"
 #include<stdlib.h>
 
+/**
+ *rev_list_order - reverses a linked list
+ *@head: pointer to the start of linked list
+ *Return: tmp the pointer to the reversed list
+ */
+
 listint_t *rev_list_order(listint_t **head)
 {
 	listint_t *tmp = NULL;
@@ -18,6 +24,13 @@ listint_t *rev_list_order(listint_t **head)
 	return (tmp);
 }
 
+/**
+ *is_palindrome - Checks if a linked list is palindrome
+ *@head: Is the pointer to the beginning of the nodes
+ *Return: 1 or 0 depending on whether the list is
+ *palindrome or not
+ */
+
 int is_palindrome(listint_t **head)
 {
 	listint_t *forward = *head;
@@ -27,7 +40,7 @@ int is_palindrome(listint_t **head)
 	if (*head == NULL)
 		return (1);
 
-	while(forward->next != NULL && forward->next->next != NULL)
+	while (forward->next != NULL && forward->next->next != NULL)
 	{
 		current = current->next;
 		forward = forward->next->next;
