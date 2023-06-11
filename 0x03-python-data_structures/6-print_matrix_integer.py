@@ -4,5 +4,5 @@ def print_matrix_integer(matrix=[[]]):
 
     for each_set in matrix:
         for sub_set in each_set:
-            print("{}".format(sub_set), end=' ')
+            print("{:d}".format(sub_set), end=" " if sub_set != each_set[-1] else "")
         print()
