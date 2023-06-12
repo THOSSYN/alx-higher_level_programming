@@ -2,7 +2,7 @@
 def print_matrix_integer(matrix=[[]]):
     """A function that prints a matrix of integers."""
 
-    for each_set in matrix:
-        for sub_set in each_set:
-            print("{:d}".format(sub_set), end=" " if sub_set != each_set[-1] else "")
+    for eset in matrix:
+        for sset in eset:
+            print("{:d}".format(sset), end=" " if sset != eset[-1] else "")
         print()
