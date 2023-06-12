@@ -10,10 +10,6 @@ def element_at(my_list, idx):
        Return: None
     """
     list_range = len(my_list) - 1
-    for num in range(list_range):
-        if idx < 0:
-            return (None)
-        elif idx > list_range:
-            return (None)
-        elif idx == num:
-            return (my_list[num])
+    if idx >= 0 and idx <= list_range:
+            return my_list[idx]
+    return None
