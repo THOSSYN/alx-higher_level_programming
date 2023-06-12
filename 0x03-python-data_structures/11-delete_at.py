@@ -11,9 +11,7 @@ def delete_at(my_list=[], idx=0):
     """
     list_range = len(my_list) - 1
 
-    for i in range(list_range):
-        if idx < 0 and idx > list_range:
-            return (my_list)
-        elif idx == i:
-            del my_list[i]
-            return (my_list)
+    if idx >= 0 and idx <= list_range:
+        del my_list[idx]
+        return my_list
+    return my_list
