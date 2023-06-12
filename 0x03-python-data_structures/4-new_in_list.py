@@ -4,13 +4,9 @@ def new_in_list(my_list, idx, element):
        specific position without modifying the original list
     """
     list_copy = my_list.copy()
-    list_range = len(list_copy)
+    list_range = len(list_copy) - 1
 
-    for i in range(list_range):
-        if idx < 0:
-            return (list_copy)
-        elif idx > list_range:
-            return (list_copy)
-        elif idx == i:
-            list_copy[i] = element
-            return (list_copy)
+    if idx >= 0 and idx <= list_range:
+        list_copy[idx] = element
+        return (list_copy)
+    return list_copy
