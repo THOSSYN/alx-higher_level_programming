@@ -13,7 +13,6 @@ def replace_in_list(my_list, idx, element):
     list_range = len(my_list) - 1
 
     if idx >= 0 and idx <= list_range:
-        for i in range(list_range):
-            my_list[idx] = element
-            return(my_list)
-    return (my_list)
+        my_list[idx] = element
+        return my_list
+    return my_list
