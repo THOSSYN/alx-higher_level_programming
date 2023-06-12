@@ -11,11 +11,9 @@ def replace_in_list(my_list, idx, element):
        Return: the original list
     """
     list_range = len(my_list) - 1
-    for i in range(list_range):
-        if idx < 0:
-            return (my_list)
-        elif idx > list_range:
-            return (my_list)
-        elif idx == i:
-            my_list[i] = element
+
+    if idx >= 0 and idx <= list_range:
+        for i in range(list_range):
+            my_list[idx] = element
             return(my_list)
+    return (my_list)
