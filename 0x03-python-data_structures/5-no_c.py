@@ -8,7 +8,9 @@ def no_c(my_string):
 
        Return: new_string
     """
-    for char in range(len(my_string)):
-        if my_string[char] == 'c' or my_string[char] == 'C':
-            my_string = my_string[:char] + my_string[char + 1:]
-            return (my_string)
+    new_str = ""
+
+    for char in my_string:
+        if char != 'c' and char != 'C':
+            new_str += char
+    return new_str
