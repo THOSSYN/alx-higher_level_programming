@@ -13,6 +13,6 @@ def safe_print_integer_err(value):
     try:
         print("{:d}".format(value))
         return True
-    except Exception:
+    except:
         sys.stderr.write("Exception: Unknown format code d' for object of type 'str'\n")
-    return False
+        return False
