@@ -4,19 +4,16 @@
 
 
 class Square:
-    """defines and initializes using __init__"""
+    """Represent a square"""
+
     def __init__(self, size=0):
-        """handle errors"""
-        """check if size is not int"""
-        if type(size) is not int:
-            """prints out TypeError exception"""
+        """Initializes a new Square.
+
+           Args:
+            size (int): The size of the new square
+        """
+        if not isinstance(size, int):
             raise TypeError("size must be an integer")
-        """check if size is less than zero"""
         elif size < 0:
-            """
-            raise a ValueError exception because
-            minimum value should be zero
-            """
             raise ValueError("size must be >= 0")
-        """assigns value to an object"""
         self.__size = size
