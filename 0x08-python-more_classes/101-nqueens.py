@@ -14,6 +14,7 @@ def is_safe(board, row, col, n):
 
     return True
 
+
 def solve_nqueens(n):
     """Solve the N-Queens problem"""
 
@@ -39,6 +40,7 @@ def solve_nqueens(n):
     backtrack(board, 0, solutions)
 
     return solutions
+
 
 if __name__ == '__main__':
     import sys
