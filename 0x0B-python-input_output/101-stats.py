@@ -25,7 +25,7 @@ def print_result(total_size, status_codes):
         status_code: is the status code returned by the file
     """
     print("File size: {}".format(total_size))
-    for code, count in sorted(status_codes.items()):
+    for code, count in status_codes.items():
         print("{}: {}".format(code, count))
 
 
