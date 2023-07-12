@@ -4,39 +4,38 @@
 import sys
 
 
-def parse_line(line):
-    """Parses each line read and call split on them
-       to retrieve the status code and file size
+def print_stats(total_size, status_codes):
+    """Prints the stats of a log file
 
        Args:
-        line: is the current line read
+        total_size: is the size of file
+        status_code: is the status code returned
     """
-    segment = line.split()
-    if len(segment) >= 2:
-        return int(segment[-1]), segment[-2]
+    print("File size: {:d}".format(total_size))
+    for code, count in sorted(status_codes.items()):
+        print("{:s}: {:d}".format(code, count))
+
+
+def parse_line(line):
+    """Parses each each line of stats read
+
+       Args:
+        line: is the stats read
+    """
+    line_parts = line.split()
+    if len(line_parts) >= 2:
+        return int(line_parts[-1]), line_parts[-2]
     return None, None
 
 
-def print_result(total_size, status_codes):
-    """Prints the result of the stats
-
-       Args:
-        total_size (int): the total size for ten lines
-        status_codes: is the dictionary of status codes and their counts
-    """
-    print("File size:", total_size)
-    for code, count in sorted(status_codes.items()):
-        print("{}: {}".format(code, count))
-
-
-def get_metric():
-    """Determines the status code, file_size and count"""
-    status_codes = {}
+def compute_metrics():
+    """determines the status code and file_size"""
     total_size = 0
+    status_codes = {}
 
     try:
-        for line_number, line in enumerate(sys.stdin, 1):
-            file_size, status_code = parse_line(line)
+        for i, line in enumerate(sys.stdin, 1):
+            file_size, status_code = parse_line(line.strip())
             if file_size is not None and status_code is not None:
                 total_size += file_size
                 if status_code in status_codes:
@@ -44,12 +43,15 @@ def get_metric():
                 else:
                     status_codes[status_code] = 1
 
-                if line_number % 10 == 0:
-                    print_result(total_size, status_codes)
+                if i % 10 == 0:
+                    print_stats(total_size, status_codes)
 
     except KeyboardInterrupt:
-        print_result(total_size, status_codes)
+        print_stats(total_size, status_codes)
+        raise
+
+    print_stats(total_size, status_codes)
 
 
-if __name__ == '__main__':
-    get_metric()
+if __name__ == "__main__":
+    compute_metrics()
