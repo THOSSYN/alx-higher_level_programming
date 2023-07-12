@@ -18,14 +18,14 @@ def parse_line(line):
 
 
 def print_result(total_size, status_codes):
-    """prints the result of the stats
+    """Prints the result of the stats
 
        Args:
         total_size (int): the total size for ten lines
-        status_code: is the status code returned by the file
+        status_codes: is the dictionary of status codes and their counts
     """
-    print("File size: {}".format(total_size))
-    for code, count in status_codes.items():
+    print("File size:", total_size)
+    for code, count in sorted(status_codes.items()):
         print("{}: {}".format(code, count))
 
 
@@ -34,17 +34,21 @@ def get_metric():
     status_codes = {}
     total_size = 0
 
-    for line_number, line in enumerate(sys.stdin, 1):
-        file_size, status_code = parse_line(line)
-        if file_size is not None and status_code is not None:
-            total_size += file_size
-            if status_code in status_codes:
-                status_codes[status_code] += 1
-            else:
-                status_codes[status_code] = 1
+    try:
+        for line_number, line in enumerate(sys.stdin, 1):
+            file_size, status_code = parse_line(line)
+            if file_size is not None and status_code is not None:
+                total_size += file_size
+                if status_code in status_codes:
+                    status_codes[status_code] += 1
+                else:
+                    status_codes[status_code] = 1
 
-            if line_number % 10 == 0:
-                print_result(total_size, status_codes)
+                if line_number % 10 == 0:
+                    print_result(total_size, status_codes)
+
+    except KeyboardInterrupt:
+        print_result(total_size, status_codes)
 
 
 if __name__ == '__main__':
