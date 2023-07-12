@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """Class to json"""
 
-MyClass = __import__('8-my_class').MyClass
-MyClass = __import__('8-my_class_2').MyClass
 
 def class_to_json(obj):
     """A function that returns the dictionary description of
@@ -17,18 +15,22 @@ def class_to_json(obj):
     else:
         raise TypeError("Object is not serializable")
     """
-    obj_class = type(obj)
-    if obj_class.__module__ == '__main__':
-        class_name = obj_class.__name__
-    else:
-        class_name = obj_class.__module__ + '.' + obj_class.__name__
+    def class_to_json(obj):
+    """A function that returns the dictionary description with simple data structure
+    for JSON serialization of an object.
 
-    if isinstance(obj, (list, dict, str, int, bool)):
-        return obj
-    elif isinstance(obj, MyClass) or isinstance(obj, MyClass2):
-        return {
-            '__class__': class_name,
-            **obj.__dict__
-        }
-    else:
-        raise TypeError("Object is not serializable")
+    Args:
+        obj: The Python object to be serialized.
+    """
+    if not isinstance(obj, type):  # Check if obj is an instance of a Class
+        raise TypeError("Object is not an instance of a Class")
+
+    attributes = {}
+
+    for attr_name in dir(obj):  # Loop through all attributes of the object
+        if not attr_name.startswith("__"):  # Exclude dunder attributes
+            attr_value = getattr(obj, attr_name)
+            if isinstance(attr_value, (list, dict, str, int, bool)):  # Check if attribute is serializable
+                attributes[attr_name] = attr_value
+
+    return attributes
