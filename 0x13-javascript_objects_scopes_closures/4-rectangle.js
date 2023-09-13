@@ -9,27 +9,27 @@ class Rectangle {
     }
   }
 
-  print() {
+  print () {
     if (this.width && this.height) {
       for (let i = 0; i < this.height; i++) {
         let row = '';
-	for (let j = 0; j < this.width; j++) {
+        for (let j = 0; j < this.width; j++) {
           row += 'X';
-	}
-	console.log(row);
+        }
+        console.log(row);
       }
     }
   }
 
-  rotate() {
+  rotate () {
     const tmp = this.height;
     this.height = this.width;
     this.width = tmp;
   }
 
-  double() {
+  double () {
     this.width *= 2;
-    this.height *= 2
+    this.height *= 2;
   }
 }
 module.exports = Rectangle;
