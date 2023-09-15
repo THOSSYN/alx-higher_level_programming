@@ -20,7 +20,10 @@ def dbReader():
             db=mysqldb_name)
     cur = db.cursor()
 
-    cur.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC", (matched_name,))
+    query = "SELECT * FROM states WHERE name = '{}' ORDER BY\
+            id ASC".format(matched_name)
+
+    cur.execute(query)
     matched = cur.fetchall()
     for state in matched:
         print(state)

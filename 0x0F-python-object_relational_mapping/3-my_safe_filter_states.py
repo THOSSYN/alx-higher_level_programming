@@ -2,7 +2,7 @@
 """Lists all states in a database"""
 
 import MySQLdb
-import sys 
+import sys
 
 
 def dbReader():
