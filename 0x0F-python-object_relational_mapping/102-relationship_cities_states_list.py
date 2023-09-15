@@ -23,6 +23,6 @@ if __name__ == '__main__':
     for state in state_list:
         # Sort the associated City objects by ID
         for city in sorted(state.cities, key=lambda c: c.id):
-            print("{}: {} -> {}".format(city.id, city.name, city.state.name))
+            print("{}: {} -> {}".format(city.id, city.name, state.name))
 
     session.close()
