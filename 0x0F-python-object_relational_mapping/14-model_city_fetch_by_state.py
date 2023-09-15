@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""prints all City objects from database"""
+"""Prints City objects with associated State names from the database"""
 
-from sqlalchemy import text, create_engine
-from sqlalchemy.orm import sessionmaker
-from model_state import Base, State
-from model_city import City
 import sys
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from relationship_state import Base, State
+from relationship_city import City
 
 if __name__ == '__main__':
     my_uname = sys.argv[1]
@@ -19,14 +19,10 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    statemt = text("SELECT states.name, cities.id, cities.name "
-                   "FROM cities "
-                   "INNER JOIN states ON cities.state_id = states.id "
-                   "ORDER BY cities.id ASC")
+    # Query all City objects and access their associated State attributes
+    city_list = session.query(City).order_by(City.id).all()
 
-    get_query = session.query(City).from_statement(statemt).all()
-
-    for city in get_query:
-        print("{}: {} {}".format(city.state.name, city.id, city.name))
+    for city in city_list:
+        print("{}: {} -> {}".format(city.id, city.name, city.state.name))
 
     session.close()
