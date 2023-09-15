@@ -19,7 +19,7 @@ if __name__ == '__main__':
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-i
+
     my_search = session.query(State).filter_by(name=my_get).first()
 
     if my_search:
