@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Creates a state with a city from a database"""
 
-import sys 
+import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from relationship_state import Base, State
@@ -13,6 +13,7 @@ if __name__ == '__main__':
                            .format(sys.argv[1], sys.argv[2], sys.argv[3]))
 
     Base.metadata.create_all(engine)
+
     Session = sessionmaker(bind=engine)
     session = Session()
 
@@ -21,6 +22,6 @@ if __name__ == '__main__':
     for state in state_list:
         print("{}: {}".format(state.id, state.name))
         for city in state.cities:
-            print("    {}: {}".format(city.id, city.name)
+            print("  {}: {}".format(city.id, city.name))
 
     session.close()
