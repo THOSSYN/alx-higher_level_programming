@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Prints State objects with name passed as argument"""
+"""Deletes States objects with 'a'in name"""
 
 from model_state import Base, State
 from sqlalchemy import create_engine
@@ -20,9 +20,8 @@ if __name__ == '__main__':
     session = Session()
 
     search_states = session.query(State).filter(State.name.like('%a%')).all()
-    session.delete(search_states)
-    #for state in search_states:
-        #session.delete(state)
+    for state in search_states:
+        session.delete(state)
 
     session.commit()
 
