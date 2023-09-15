@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lists all State objects containing 'a'"""
+"""Prints State objects with name passed as argument"""
 
 from model_state import Base, State
 from sqlalchemy import create_engine
@@ -19,11 +19,11 @@ if __name__ == '__main__':
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-
+i
     my_search = session.query(State).filter_by(name=my_get).first()
 
     if my_search:
-        print("{}".format(state.id))
+        print("{}".format(my_search.id))
     else:
         print("Not found")
 
