@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
     # Fetch State objects and their associated City objects, sorting both by ID
     state_list = session.query(State).order_by(State.id).all()
-    
+
     for state in state_list:
         print("{}: {}".format(state.id, state.name))
         # Sort the associated City objects by ID
