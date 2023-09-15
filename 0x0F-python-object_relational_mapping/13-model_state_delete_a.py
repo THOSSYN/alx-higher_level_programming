@@ -20,8 +20,9 @@ if __name__ == '__main__':
     session = Session()
 
     search_states = session.query(State).filter(State.name.like('%a%')).all()
-    for state in search_states:
-        session.delete(state)
+    session.delete(search_states)
+    #for state in search_states:
+        #session.delete(state)
 
     session.commit()
 
