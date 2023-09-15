@@ -4,7 +4,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
-
+import sys
 
 if __name__ == '__main__':
     my_uname = sys.argv[1]
@@ -21,3 +21,5 @@ if __name__ == '__main__':
 
     for state in all_states:
         print("{}: {}".format(state.id, state.name))
+
+    session.close()
