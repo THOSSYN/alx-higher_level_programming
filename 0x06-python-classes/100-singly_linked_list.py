@@ -28,7 +28,7 @@ class Node:
             raise TypeError("data must be an integer")
         else:
             self.__data = value
-    
+
     @property
     def next_node(self):
         """Gets or retrieve next_node"""
@@ -41,6 +41,7 @@ class Node:
             raise TypeError("next_node must be a Node object")
         else:
             self.__next_node = value
+
 
 class SinglyLinkedList:
     """Defines a singly linked list"""
@@ -65,18 +66,17 @@ class SinglyLinkedList:
             new_node.next_node = self.head
             self.head = new_node
         else:
-            current = self.head
-            while current.next_node is not None and isinstance(current.next_node, Node)\
-                    and value >= current.next_node.data:
-                current = current.next_node
-            new_node.next_node = current.next_node
-            current.next_node = new_node
+            cur = self.head
+            while cur.next_node is not None and isinstance(cur.next_node, Node) and value >= cur.next_node.data:
+                cur = cur.next_node
+            new_node.next_node = cur.next_node
+            cur.next_node = new_node
 
     def __str__(self):
         """Prints the entire linked list"""
         nodes = []
-        current = self.head
-        while current is not None:
-            nodes.append(str(current.data))
-            current = current.next_node
+        cur = self.head
+        while cur is not None:
+            nodes.append(str(cur.data))
+            cur = cur.next_node
         return "\n".join(nodes)
