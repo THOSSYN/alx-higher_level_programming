@@ -20,5 +20,9 @@ if __name__ == '__main__':
     url = f"https://api.github.com/repos/{owner}/{repo}/commits?sha={branch}"
     response = requests.get(url, headers=headers)
 
-    commit = response.json()
-    print(commit)
+    commits = response.json()
+    count = 0
+    for commit in commits:
+        if count < 10:
+            print(f"{commit['sha']}: {commit['commit']['author']['name']}")
+            count += 1
