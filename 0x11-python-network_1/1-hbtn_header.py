@@ -7,7 +7,6 @@ import urllib.request
 
 if __name__ == '__main__':
     url = sys.argv[1]
-    #head_var = "X-Request-Id"
     req = urllib.request.Request(url)
     with urllib.request.urlopen(req) as response:
         x_request_id = response.headers['X-Request-Id']
