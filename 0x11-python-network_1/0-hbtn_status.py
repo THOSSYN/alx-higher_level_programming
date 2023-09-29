@@ -9,4 +9,8 @@ if __name__ == '__main__':
     req = urllib.request.Request(url)
     with urllib.request.urlopen(req) as response:
         code = response.read()
-        print(code)
+        str_code = code.decode('utf-8')
+        final_output = f"Body response:\n    - type: {type(code)}\
+\n    - content: {code}\
+\n    - utf8 content: {str_code}"
+        print(final_output)
