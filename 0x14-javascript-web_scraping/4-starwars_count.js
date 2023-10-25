@@ -7,24 +7,13 @@ const urlEndpoint = process.argv[2];
 request(urlEndpoint, function (error, response, body) {
   if (!error && response.statusCode === 200) {
     const jsonObj = JSON.parse(body);
-    const charactersUrl = jsonObj.results[0].characters[15];
-
-    request(charactersUrl, function (err, r, body) {
-      if (!err && r.statusCode === 200) {
-        const charactersObj = JSON.parse(body);
-        const movieList = charactersObj.films;
-        const count = movieList.length;
-
-        let i = 0;
-        while (i < count) {
-          i++;
-        }
-        console.log(i);
-      } else {
-        console.error('Error fetching character details:', err);
-      }
-    });
-  } else {
-    console.error('Error fetching film details:', error);
+    const list = jsonObj.results;
+    const listSize = jsonObj.results.length;
+    let count = 0;
+    const characterId = 'https://swapi-api.alx-tools.com/api/people/19/';
+    for (let i = 0; i < listSize; i++) {
+      if (list[i].characters.includes(characterId)) count++;
+    }
+    console.log(count);
   }
 });
