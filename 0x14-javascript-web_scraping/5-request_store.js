@@ -7,9 +7,13 @@ const fs = require('fs');
 const request = require('request');
 
 request(urlEndpoint, function (err, r, body) {
-        fs.writeFile(filePath, body, 'utf8', (err) => {
-                if (err) {
-                        console.error(err);
-                }
-        });
+  if (!err && r.statusCode === 200) {
+    fs.writeFile(filePath, body, 'utf8', (error) => {
+      if (error) {
+        console.error(error);
+      }
+    });
+  } else {
+    console.error(err);
+  }
 });

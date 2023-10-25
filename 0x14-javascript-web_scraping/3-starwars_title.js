@@ -6,8 +6,10 @@ const filmId = process.argv[2];
 const requestUrl = `https://swapi-api.alx-tools.com/api/films/${filmId}`;
 
 request(requestUrl, function (error, response, body) {
-        if (response.statusCode === 200) {
-                const json_obj = JSON.parse(body);
-                console.log(json_obj.title);
-        }
+  if (error) {
+    console.error(error);
+  } else if (response.statusCode === 200) {
+    const jsonObj = JSON.parse(body);
+    console.log(jsonObj.title);
+  }
 });

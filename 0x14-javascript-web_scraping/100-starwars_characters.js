@@ -6,13 +6,21 @@ const urlEndpoint = `https://swapi-api.alx-tools.com/api/films/${id}/`;
 const request = require('request');
 
 request(urlEndpoint, (err, r, body) => {
-        const json_obj = JSON.parse(body);
-        const character_list = json_obj.characters
+  if (!err && r.statusCode === 200) {
+    const jsonObj = JSON.parse(body);
+    const characterList = jsonObj.characters;
 
-        for (const character of character_list) {
-                request(character, (error, res, content) => {
-                        const char_obj = JSON.parse(content);
-                        console.log(char_obj.name);
-                });
+    for (const character of characterList) {
+      request(character, (error, res, content) => {
+        if (!error && res.statusCode === 200) {
+          const charObj = JSON.parse(content);
+          console.log(charObj.name);
+        } else {
+          console.error(error);
         }
+      });
+    }
+  } else {
+    console.error(err);
+  }
 });
